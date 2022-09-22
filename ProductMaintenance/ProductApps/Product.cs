@@ -9,16 +9,17 @@ namespace ProductApps
 {
     class Product
     {
-        private decimal price;
+        private double price;
         private int quantity;
-        private decimal totalPayment;
-        private decimal totalDelivery;
-        private decimal totalWrap;
-        private decimal delivery;
-        private decimal wrapping;
-        private decimal gst;
+        private double totalPayment;
+        private double totalDelivery;
+        private double totalWrap;
+        private double totalGST;
+        private double delivery;
+        private double wrapping;
+        private double gst;
 
-        private decimal Price
+        private double Price
         {
             get { return price; }
             set { price = value; }
@@ -30,49 +31,56 @@ namespace ProductApps
             set { quantity = value; }
         }
 
-        public decimal TotalPayment
+        public double TotalPayment
         {
             get { return totalPayment; }
             set { totalPayment = value; }
         }
-        public decimal TotalDelivery
+        public double TotalDelivery
         {
             get { return totalDelivery; }
             set { totalDelivery = value; }
         }
 
-        public decimal TotalWrap
+        public double TotalWrap
         {
             get { return totalWrap; }
             set { totalWrap = value; }
         }
 
-        private decimal Delivery
+        public double TotalGST
+        {
+            get { return totalGST; }
+            set { totalGST = value; }
+        }
+
+        private double Delivery
         {
             get { return delivery; }
             set { delivery = value; }
         }
 
 
-        private decimal Wrapping
+        private double Wrapping
         {
             get { return wrapping; }
             set { wrapping = value; }
         }
 
-        private decimal GST
+        private double GST
         {
             get { return gst; }
             set { gst = value; }
         }
 
         //Constructor for Product
-        public Product(decimal price, int quantity)
+        public Product(double price, int quantity)
         {
             Price = price;
             Quantity = quantity;
             Delivery = 25;
             Wrapping = 5;
+            GST = 0.1;
         }
 
         //Calculate the total payment
@@ -91,6 +99,11 @@ namespace ProductApps
         public void calTotalWrap()
         {
             TotalWrap = TotalDelivery + Wrapping;
+        }
+        // calc total gst
+        public void calTotalGST()
+        {
+            TotalGST = (TotalPayment * GST) + TotalWrap;
         }
     }
 }
